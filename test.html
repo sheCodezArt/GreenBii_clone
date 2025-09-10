@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreenBii</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+/* Header Styling */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 8%;
+  background-color: #fff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo */
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #05652c;
+  cursor: pointer;
+}
+.logo span {
+  color: #06a340;
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-links li a,
+.drop-btn {
+  text-decoration: none;
+  color: #212121;
+  font-size: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover,
+.drop-btn:hover {
+  color: #06a340;
+}
+
+/* Dropdown Styling */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  top: 45px;
+  left: 0;
+  list-style: none;
+  padding: 12px 0;
+  min-width: 220px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.dropdown-menu li a {
+  /* display: block; */
+  display: flex;
+  padding: 20px;
+  color: #444;
+  font-size: 15px;
+  transition: background 0.3s ease;
+}
+
+.dropdown-menu li a i {
+  padding-right: 10px;
+}
+
+.nav-links li:first-child .dropdown-menu li:nth-last-child(-n+2), .nav-links li:nth-child(2) .dropdown-menu li:nth-last-child {
+  background-color: #eafeea;
+  border-radius: 10px;
+  border-left: #05652c solid 3px;
+  /* padding: 7px 13px; */
+  margin-top: 12px;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #eafeea;
+  color: #05652c;
+}
+
+.dropdown.active .dropdown-menu {
+  display: block;
+}
+
+/* Auth Buttons */
+.auth-buttons {
+  display: flex;
+  gap: 12px;
+  margin-left: 20px;
+}
+
+.auth-buttons button {
+  padding: 9px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.signup {
+  background-color: #06a340;
+  color: white;
+  border: none;
+}
+.signup:hover {
+  background-color: #05652c;
+}
+
+.login {
+  background-color: transparent;
+  color: #05652c;
+  border: 2px solid #05652c;
+}
+.login:hover {
+  background-color: #eafeea;
+}
+
+/* Hamburger Menu 
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #05652c;
+}*/
+
+/* ✅ Fix 1: Hamburger sits above everything */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #05652c;
+  z-index: 2000;
+  position: relative;
+}
+
+/* ✅ Fix 3: Style last two items ONLY in first dropdown */
+.nav-links li.dropdown:first-child .dropdown-menu li:nth-last-child(-n+2) {
+  background-color: #eafeea;
+  border-radius: 10px;
+  border-left: #05652c solid 3px;
+  margin-top: 12px;
+}
+
+/* Keep other dropdowns normal */
+.dropdown-menu li a {
+  display: flex;
+  padding: 12px 15px;
+  color: #6d6d6d;
+  font-size: 15px;
+  font-weight: 300;
+  transition: background 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #eafeea;
+  color: #05652c;
+}
+
+/* Smooth dropdown animation */
+.dropdown-menu {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-in-out;
+}
+
+section {
+  padding: 60px 8%;
+}
+
+h1, h2, h3 {
+  color: #3a3a3a;
+}
+
+/* === SECTION 1 === */
+.hero {
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  background: linear-gradient(160deg, #095930, #028442);
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.hero-buttons button {
+  padding: 12px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #ffc107;
+  color: #05652c;
+}
+.btn-primary:hover {
+  background-color: #ffde79;
+}
+
+.btn-secondary {
+  background-color: #fff;
+  color: #ffc107;
+  border: 2px solid #05652c;
+}
+.btn-secondary:hover {
+  background-color: #eafeea;
+}
+
+.hero-image {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 1s ease;
+}
+
+.hero-image img.active {
+  opacity: 1;
+}
+
+.image-badge {
+  position: absolute;
+  top: 7px;
+  right: 5px;
+  background-color: #ffc107;
+  padding: 8px 16px;
+  border-radius: 14px;
+  font-weight: 600;
+  color: #222;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+/* === SECTION 2 === */
+.grid-6 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.grid-item {
+  padding: 20px;
+  background-color: #f8fdf8;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  font-weight: 500;
+}
+
+/* === SECTION 3 === */
+section:nth-child(3) div:first-child {
+  text-align: center;
+}
+
+section:nth-child(3) div:first-child h2 {
+  line-height: 1.5;
+}
+
+section:nth-child(3) div:first-child p {
+  font-weight: 200;
+  line-height: 1.7;
+  margin-top: 30px;
+}
+
+.chaos {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  /* align-items: center; */
+  gap: 40px;
+}
+
+.chaos div img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  background: #fff;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  gap: 10px;
+}
+
+.feature-list li i {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+.check-icon {
+  background-color: #06a340;
+  color: white;
+}
+
+.cross-icon {
+  color: #fff;
+  background: #e63946;
+}
+
+/* === SECTION 5 === */
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.solution-card {
+  background: #f8fdf8;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* === FOOTER === */
+footer {
+  background: #05652c;
+  color: white;
+  text-align: center;
+  padding: 25px 10px;
+  margin-top: 50px;
+}
+
+/* === RESPONSIVENESS === */
+@media screen and (max-width: 900px) {
+  .hero {
+    text-align: center;
+    grid-template-columns: 1fr;
+  }
+  
+  .grid-6 {
+    grid-template-columns: 2fr 1fr;
+  }
+  
+  .chaos {
+    grid-template-columns: 1fr;
+  }
+  .hero-buttons {
+    flex-direction: column;
+  }
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 900px) {
+  nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    width: 80%;
+    height: 100vh;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    padding: 80px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 25px;
+  }
+
+  nav.active {
+    transform: translateX(0);
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  .dropdown {
+    padding-bottom: 22px;
+  }
+
+  .dropdown-menu {
+    position: relative;
+    top: 0;
+    left: 0;
+    box-shadow: none;
+    padding: 5px 0 10px;
+    background-color: transparent;
+  }
+
+  .dropdown-menu li a {
+    padding: 12px 19px;
+  }
+  
+  /* ✅ Fix 2: Space between dropdown text & arrow */
+  .drop-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 240px;
+  }
+
+  .auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .auth-buttons button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Mobile menu scroll fix */
+@media (max-width: 768px) {
+  .navbar {
+    max-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* To make dropdowns stack better */
+  .dropdown-menu {
+    position: relative;
+    max-height: none;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <!-- Logo -->
+    <div class="logo">Green<span>Bii</span></div>
+
+    <!-- Hamburger Menu for Mobile -->
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+      <ul class="nav-links">
+        <!-- Dropdown 1 -->
+        <li class="dropdown">
+          <button class="drop-btn">
+            <span>Products</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#"><i class="fas fa-school"></i>School Management</a></li>
+            <li><a href="#"><i class="fas fa-book-open"></i>Bookkeeping</a></li>
+            <li><a href="#"><i class="fas fa-store"></i>Storefront</a></li>
+            <li><a href="#"><i class="fas fa-users"></i>HR Management</a></li>
+            <li><a href="#"><i class="fas fa-globe"></i>Website Builder</a></li>
+            <li><a href="#"><i class="fas fa-puzzle-piece"></i>Payment Gateway</a></li>
+            <li><a href="#">Business Hardware <i class="fas fa-arrow-right"></i></a></li>
+            <li><a href="#">View All Products <i class="fas fa-arrow-right"></i></a></li>
+          </ul>
+        </li>
+
+        <!-- Dropdown 2 -->
+        <li class="dropdown">
+          <button class="drop-btn">
+            <span>Solutions</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#"><h4>FOR EDUCATION</h4></a></li>
+            <li><a href="#">K-12 School</a></li>
+            <li><a href="#">Professional Services</a></li>
+            <li><a href="#"><h4>FOE COMMERCE</h4></a></li>
+            <li><a href="#">Retail & E-Commerce</a></li>
+            <li><a href="#">Real Estate agencies</a></li>
+            <li><a href="#"><h4>FOR INDUSTRY & SERVICES</h4></a></li>
+            <li><a href="#">HealthCare Clinics</a></li>
+            <li><a href="#">Oil & Gas</a></li>
+            <li><a href="#">Request a custom</a></li>
+          </ul>
+        </li>
+
+        <!-- Middle link (no dropdown)
+        <li><a href="#" class="plain-link">Pricing</a></li> -->
+        <li class="dropdown">
+          <button class="drop-btn">
+            <span>Pricing</span>
+            <i></i>
+          </button></li>
+
+        <!-- Dropdown 3 -->
+        <li class="dropdown">
+          <button class="drop-btn">
+            <span>About Us</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Partners</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+        </li>
+
+        <!-- Dropdown 4 -->
+        <li class="dropdown">
+          <button class="drop-btn">
+            <span>Resources</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Webinar</a></li>
+            <li><a href="#">Help Center</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Auth Buttons -->
+      <div class="auth-buttons">
+        <button class="login">Sign In</button>
+        <button class="signup">Get Started</button>
+      </div>
+    </nav>
+  </header>
+  
+  <main>
+    <!-- === SECTION 1 === --> 
+    <section class="hero">
+    <div class="hero-text">
+      <h1 style="color: #fff;">Run your Business with <b style="color: #e2ba02;">GreenBii</b></h1>
+      <p>All-in-one solutions to manage, scale, and grow your business with ease. From education to commerce, we've got you covered.</p>
+      <div class="hero-buttons">
+        <button class="btn-primary">Start free trial <i class="fas fa-arrow-right"></i></button>
+        <button class="btn-secondary"><i class="fas fa-play"></i> Why We Built GreenBii</button>
+      </div>
+    </div>
+    <div class="hero-image">
+  <div class="image-badge">Trusted by 5K+ Businesses</div>
+  <img src="https://source.unsplash.com/600x400/?business" class="active" />
+  <img src="https://source.unsplash.com/600x400/?startup" />
+  <img src="https://source.unsplash.com/600x400/?office" />
+  <img src="https://source.unsplash.com/600x400/?team" />
+</div>
+
+  </section>  <!-- === SECTION 2 === -->  <section>
+    <p>GreenBii simplifies business operations with intelligent tools designed for every industry.</p>
+    <div class="grid-6">
+      <div class="grid-item">School Management</div>
+      <div class="grid-item">E-commerce Solutions</div>
+      <div class="grid-item">Payment Integration</div>
+      <div class="grid-item">Team Collaboration</div>
+      <div class="grid-item">Analytics & Reports</div>
+      <div class="grid-item">24/7 Support</div>
+    </div>
+  </section> 
+  <!-- === SECTION 3 === -->
+  <section>
+    <div>
+      <h2>From Chaos to Clarity</h2>
+      <p>GreenBii brings together everything your business needs in one platform, helping you move from scattered tools to seamless workflows.</p>
+    </div>
+    <div class="chaos">
+    <div>
+    <h3>Online platform, endless opportunity</h3>
+    <img src="withG.jpg" alt="correct">
+    <ul class="feature-list">
+      <li><i class="fas fa-check check-icon"></i> Simplify management tasks</li>
+      <li><i class="fas fa-check check-icon"></i> Automate recurring processes</li>
+      <li><i class="fas fa-check check-icon"></i> Collaborate effectively</li>
+      <li><i class="fas fa-check check-icon"></i> Access anywhere, anytime</li>
+    </ul>
+    </div>
+
+    <div>
+    <h3 style="margin-top:30px;">Multiple apps, multiple headaches</h3>
+    <img src="withoutG.jpg" alt="wrong">
+    <ul class="feature-list">
+      <li><i class="fas fa-times cross-icon"></i> Switching between tools</li>
+      <li><i class="fas fa-times cross-icon"></i> Data inconsistencies</li>
+      <li><i class="fas fa-times cross-icon"></i> Lost productivity</li>
+      <li><i class="fas fa-times cross-icon"></i> High subscription costs</li>
+    </ul>
+    </div>
+  </div>
+
+  </section>
+  <!-- === SECTION 5 === -->
+  <section>
+    <h2>Solutions Built For Your Industry</h2>
+    <p>Whether you're a school, startup, or enterprise, GreenBii adapts to you.</p>
+    <div class="solutions-grid">
+      <div class="solution-card">Education</div>
+      <div class="solution-card">Retail & Commerce</div>
+      <div class="solution-card">Healthcare</div>
+    </div>
+  </section>
+  <!-- === FOOTER === --> 
+  <footer>
+    <p>&copy; 2025 GreenBii. All Rights Reserved.</p>
+  </footer>
+  </main>
+
+  <script>
+const menuToggle = document.getElementById("menu-toggle");
+const navbar = document.getElementById("navbar");
+const dropdowns = document.querySelectorAll(".dropdown");
+
+// ✅ Toggle mobile menu
+menuToggle.addEventListener("click", () => {
+  navbar.classList.toggle("active");
+  menuToggle.innerHTML = navbar.classList.contains("active")
+    ? '<i class="fas fa-times"></i>'
+    : '<i class="fas fa-bars"></i>';
+});
+
+// ✅ Smooth dropdown toggle — auto-closes others
+dropdowns.forEach((dropdown) => {
+  const button = dropdown.querySelector(".drop-btn");
+  const menu = dropdown.querySelector(".dropdown-menu");
+
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Close any open dropdowns except the one clicked
+    dropdowns.forEach((otherDropdown) => {
+      if (otherDropdown !== dropdown) {
+        otherDropdown.classList.remove("active");
+        const otherMenu = otherDropdown.querySelector(".dropdown-menu");
+        if (otherMenu) {
+          otherMenu.style.maxHeight = null;
+        }
+      }
+    });
+
+    // Toggle the clicked dropdown
+    dropdown.classList.toggle("active");
+
+    // Smooth animation for the clicked dropdown
+    if (dropdown.classList.contains("active")) {
+      menu.style.maxHeight = menu.scrollHeight + "px";
+    } else {
+      menu.style.maxHeight = null;
+    }
+  });
+});
+
+// === IMAGE SLIDER ===
+    const images = document.querySelectorAll('.hero-image img');
+    let current = 0;
+
+    setInterval(() => {
+      images[current].classList.remove('active');
+      current = Math.floor(Math.random() * images.length);
+      images[current].classList.add('active');
+    }, 4000);
+  </script>
+</body>
+</html>

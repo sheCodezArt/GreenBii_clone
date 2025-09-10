@@ -1,0 +1,288 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+/* Header Styling */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 8%;
+  background-color: #fff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo */
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #05652c;
+  cursor: pointer;
+}
+.logo span {
+  color: #06a340;
+}
+
+/* Navbar */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-links li a,
+.drop-btn {
+  text-decoration: none;
+  color: #212121;
+  font-size: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover,
+.drop-btn:hover {
+  color: #06a340;
+}
+
+/* Dropdown Styling */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  top: 45px;
+  left: 0;
+  list-style: none;
+  padding: 12px 0;
+  min-width: 220px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.dropdown-menu li a {
+  /* display: block; */
+  display: flex;
+  padding: 20px;
+  color: #444;
+  font-size: 15px;
+  transition: background 0.3s ease;
+}
+
+.dropdown-menu li a i {
+  padding-right: 10px;
+}
+
+.nav-links li:first-child .dropdown-menu li:nth-last-child(-n+2) {
+  background-color: #eafeea;
+  border-radius: 10px;
+  border-left: #05652c solid 3px;
+  /* padding: 7px 13px; */
+  margin-top: 12px;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #eafeea;
+  color: #05652c;
+}
+
+.dropdown.active .dropdown-menu {
+  display: block;
+}
+
+/* Auth Buttons */
+.auth-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.auth-buttons button {
+  padding: 9px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.signup {
+  background-color: #06a340;
+  color: white;
+  border: none;
+}
+.signup:hover {
+  background-color: #05652c;
+}
+
+.login {
+  background-color: transparent;
+  color: #05652c;
+  border: 2px solid #05652c;
+}
+.login:hover {
+  background-color: #eafeea;
+}
+
+/* Hamburger Menu 
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #05652c;
+}*/
+
+/* ✅ Fix 1: Hamburger sits above everything */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #05652c;
+  z-index: 2000;
+  position: relative;
+}
+
+/* ✅ Fix 2: Space between dropdown text & arrow */
+.drop-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 240px;
+}
+
+/* ✅ Fix 3: Style last two items ONLY in first dropdown */
+.nav-links li.dropdown:first-child .dropdown-menu li:nth-last-child(-n+2) {
+  background-color: #eafeea;
+  border-radius: 10px;
+  border-left: #05652c solid 3px;
+  margin-top: 12px;
+}
+
+/* Keep other dropdowns normal */
+.dropdown-menu li a {
+  display: flex;
+  padding: 12px 15px;
+  color: #6d6d6d;
+  font-size: 15px;
+  font-weight: 300;
+  transition: background 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #eafeea;
+  color: #05652c;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 900px) {
+  nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    width: 80%;
+    height: 100vh;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    padding: 80px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 25px;
+  }
+
+  nav.active {
+    transform: translateX(0);
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  .dropdown {
+    padding-bottom: 22px;
+  }
+
+  .dropdown-menu {
+    position: relative;
+    top: 0;
+    left: 0;
+    box-shadow: none;
+    padding: 5px 0 10px;
+    background-color: transparent;
+  }
+
+  .dropdown-menu li a {
+    padding: 12px 19px;
+  }
+
+  .auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .auth-buttons button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Mobile menu scroll fix */
+@media (max-width: 768px) {
+  .navbar {
+    max-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* To make dropdowns stack better */
+  .dropdown-menu {
+    position: relative;
+    max-height: none;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
