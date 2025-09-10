@@ -1,0 +1,645 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AquaBlack • Modern Business</title>
+  <meta name="description" content="A modern, responsive business website template with aqua + black theme — animations, waves, particles, components, and responsiveness." />
+  <style>
+    /* --------------------
+       Theme variables
+       -------------------- */
+    :root{
+      --aqua:#00d1d1;
+      --aqua-2:#00bfbd;
+      --black:#0b0b0f;
+      --muted:#9aa3a8;
+      --glass: rgba(255,255,255,0.04);
+      --card: rgba(255,255,255,0.02);
+      --glass-2: rgba(0,0,0,0.35);
+      --radius:14px;
+      --shadow: 0 8px 30px rgba(2,6,23,0.6);
+      --max-width:1200px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }/* --------------------
+   Reset + base
+   -------------------- */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(180deg,var(--black) 0%, #020203 100%);
+  color: #e6f7f7;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  padding-bottom:60px;
+}
+
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+.container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
+
+/* --------------------
+   NAV
+   -------------------- */
+header{position:sticky;top:0;z-index:60;backdrop-filter: blur(6px);background:linear-gradient(180deg, rgba(3,6,10,0.6), rgba(3,6,10,0.4));border-bottom:1px solid rgba(255,255,255,0.03)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--aqua),var(--aqua-2));display:flex;align-items:center;justify-content:center;color:var(--black);font-weight:800;box-shadow:0 6px 20px rgba(0,209,209,0.12);font-family:monospace}
+.brand h1{font-size:18px;margin:0}
+nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;align-items:center}
+nav li{font-weight:600;color:var(--muted)}
+.cta{padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--aqua),var(--aqua-2));color:var(--black);font-weight:700;box-shadow:var(--shadow)}
+
+.hamburger{display:none;border:0;background:none;color:var(--aqua);font-size:22px}
+
+/* --------------------
+   HERO
+   -------------------- */
+.hero{position:relative;padding:60px 0 40px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center}
+.hero h2{font-size:42px;margin:0 0 12px;line-height:1.02}
+.hero p{color:var(--muted);margin:0 0 22px}
+.hero .btns{display:flex;gap:12px}
+.feature-cards{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,0.6);min-width:160px}
+
+/* SVG waves */
+.waves{position:absolute;right: -10%;bottom: -2%;width:120%;height:420px;opacity:0.22;filter:blur(12px);transform:rotate(6deg)}
+
+/* right column card */
+.card-pro{padding:22px;border-radius:16px;background:linear-gradient(135deg, rgba(0,0,0,0.45), rgba(255,255,255,0.02));backdrop-filter: blur(6px);box-shadow:var(--shadow)}
+
+/* --------------------
+   SECTIONS
+   -------------------- */
+section{padding:56px 0}
+.section-title{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.section-title h3{margin:0;font-size:20px}
+
+/* services grid */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.service{background:var(--card);padding:20px;border-radius:14px;transition:transform .36s cubic-bezier(.2,.9,.3,1), box-shadow .36s}
+.service:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,0.6)}
+
+/* pricing */
+.pricing{display:flex;gap:18px;flex-wrap:wrap}
+.price{flex:1;min-width:220px;padding:20px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
+
+/* testimonials 
+.testimonials{display:flex;gap:18px;overflow:auto;padding-bottom:8px}
+.testimonials .t{min-width:280px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(255,255,255,0.01));} */
+
+
+/** Added */
+
+.testimonials {
+  padding: 5rem 2rem;
+  background-color: #051c24;
+  text-align: center;
+}
+.testimonials h2 {
+  font-size: 2rem;
+  color: #00ffff;
+  margin-bottom: 2rem;
+}
+.testimonial-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1rem;
+}
+.testimonial-wrapper::-webkit-scrollbar {
+  display: none;
+}
+.testimonial {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+  background: #0b2b38;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+.testimonial:hover {
+  transform: scale(1.05);
+}
+.testimonial img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+.testimonial p {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+.testimonial span {
+  font-size: 0.8rem;
+  color: #00ffff;
+}
+
+/* Gallery Section */
+.gallery {
+  padding: 5rem 2rem;
+  background-color: #000;
+  text-align: center;
+}
+.gallery h2 {
+  font-size: 2rem;
+  color: #00ffff;
+  margin-bottom: 2rem;
+}
+.gallery-container {
+  display: flex;
+  gap: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+.gallery-track {
+  display: flex;
+  animation: scrollGallery 25s linear infinite;
+  gap: 1rem;
+}
+.gallery img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes scrollGallery {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .testimonial {
+    flex: 0 0 80%;
+  }
+  .gallery img {
+    width: 200px;
+    height: 350px;
+  }
+}
+
+/** Added */
+
+/* team */
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.member{padding:18px;border-radius:12px;background:var(--glass);text-align:center}
+
+/* footer */
+footer{padding:30px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.03);}
+
+/* small screens */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;}
+  nav ul{display:none}
+  .hamburger{display:block}
+  .services{grid-template-columns:repeat(2,1fr)}
+  .team{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){
+  .services{grid-template-columns:1fr}
+  .team{grid-template-columns:1fr}
+  .logo{width:40px;height:40px}
+  .hero h2{font-size:28px}
+}
+
+/* --------------------
+   MICRO-INTERACTIONS & ANIMATIONS
+   -------------------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+.spark{position:absolute;pointer-events:none;filter:blur(1px);mix-blend-mode:screen}
+
+/* form styles */
+.form-row{display:flex;gap:12px}
+.input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+
+/* tiny helpers */
+.muted{color:var(--muted)}
+.kbd{background:#071014;padding:6px 8px;border-radius:8px;font-weight:700}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">AB</div>
+        <div>
+          <h1 style="font-size:16px;margin-bottom:2px">AquaBlack</h1>
+          <div class="muted" style="font-size:12px">Modern business UI kit</div>
+        </div>
+      </div><nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a class="cta" href="#get">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <button class="hamburger" aria-label="Open menu" id="menuBtn">☰</button>
+</div>
+
+  </header>  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px">
+            <div class="kbd">NEW</div>
+            <div class="muted">Launch-ready • 2025</div>
+          </div>
+          <h2 class="reveal">We build bold digital products that scale — fast.</h2>
+          <p class="muted reveal">A full-service modern business website template — marketing pages, dashboard stub, contact & booking, animated components, and responsive layout prepared for production.</p><div class="btns reveal" style="margin-top:12px">
+        <a class="cta" href="#get">Start Free</a>
+        <a class="muted" href="#services" style="padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);">View services</a>
+      </div>
+
+      <div class="feature-cards reveal" style="margin-top:20px">
+        <div class="card">Secured Payments</div>
+        <div class="card">SLA & Support</div>
+        <div class="card">Custom Integrations</div>
+      </div>
+
+      <div style="margin-top:22px" class="reveal">
+        <small class="muted">Trusted by teams at</small>
+        <div style="display:flex;gap:12px;margin-top:10px;align-items:center">
+          <div style="width:54px;height:36px;background:rgba(255,255,255,0.02);border-radius:8px"></div>
+          <div style="width:54px;height:36px;background:rgba(255,255,255,0.02);border-radius:8px"></div>
+          <div style="width:54px;height:36px;background:rgba(255,255,255,0.02);border-radius:8px"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-pro reveal" aria-hidden="false">
+      <h4 style="margin-top:0">Product snapshot</h4>
+      <p class="muted" style="font-size:13px">A single place for analytics, quick links, and live status.</p>
+      <div style="display:flex;gap:10px;margin-top:12px">
+        <div style="flex:1">
+          <strong>Active</strong>
+          <div class="muted">1,204 users</div>
+        </div>
+        <div style="flex:1">
+          <strong>MRR</strong>
+          <div class="muted">$24,800</div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px">
+        <small class="muted">Quick actions</small>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button class="cta" style="padding:8px 10px">Invite</button>
+          <button style="padding:8px 10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04)">Settings</button>
+        </div>
+      </div>
+
+      <div style="margin-top:16px">
+        <div style="height:90px;border-radius:10px;background:linear-gradient(90deg,var(--aqua),var(--aqua-2));opacity:0.08"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- decorative waves -->
+  <svg class="waves" viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden>
+    <defs>
+      <linearGradient id="g1" x1="0" x2="1">
+        <stop offset="0%" stop-color="var(--aqua)" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="var(--aqua-2)" stop-opacity="0.6"/>
+      </linearGradient>
+    </defs>
+    <path fill="url(#g1)" d="M0,224L60,192C120,160,240,96,360,101.3C480,107,600,181,720,192C840,203,960,149,1080,144C1200,139,1320,181,1380,202.7L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+  </svg>
+
+  <!-- particle canvas for sparks -->
+  <canvas id="particleCanvas" class="spark" width="800" height="400" style="right:0;bottom:0;position:absolute;pointer-events:none;mix-blend-mode:screen;opacity:0.9"></canvas>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-title"><h3>Services</h3><div class="muted">What we do</div></div>
+    <div class="services">
+      <div class="service reveal">
+        <h4>Custom Web Apps</h4>
+        <p class="muted">From MVPs to enterprise-grade SPAs and PWAs.</p>
+      </div>
+      <div class="service reveal">
+        <h4>Design & Branding</h4>
+        <p class="muted">UI/UX, identity and motion systems.</p>
+      </div>
+      <div class="service reveal">
+        <h4>Cloud & Infra</h4>
+        <p class="muted">Autoscaling, deployments, and monitoring.</p>
+      </div>
+      <div class="service reveal">
+        <h4>Data & Analytics</h4>
+        <p class="muted">Dashboards, ETL, and reporting.</p>
+      </div>
+      <div class="service reveal">
+        <h4>Integrations</h4>
+        <p class="muted">Payment, CRM, and third-party APIs.</p>
+      </div>
+      <div class="service reveal">
+        <h4>Support</h4>
+        <p class="muted">SLA-driven support & maintenance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-title"><h3>Pricing</h3><div class="muted">Flexible plans for teams of every size</div></div>
+    <div class="pricing">
+      <div class="price reveal">
+        <h4>Starter</h4>
+        <div class="muted">$0 / month • 14-day trial</div>
+        <ul class="muted">
+          <li>Up to 3 users</li>
+          <li>Basic support</li>
+        </ul>
+        <div style="margin-top:12px"><button class="cta">Choose</button></div>
+      </div>
+
+      <div class="price reveal">
+        <h4>Growth</h4>
+        <div class="muted">$79 / month</div>
+        <ul class="muted">
+          <li>Unlimited projects</li>
+          <li>Premium integrations</li>
+        </ul>
+        <div style="margin-top:12px"><button class="cta">Choose</button></div>
+      </div>
+
+      <div class="price reveal">
+        <h4>Enterprise</h4>
+        <div class="muted">Custom</div>
+        <ul class="muted">
+          <li>Dedicated support</li>
+          <li>Custom SLA</li>
+        </ul>
+        <div style="margin-top:12px"><button class="cta">Contact sales</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS
+<section id="testi">
+  <div class="container">
+    <div class="section-title"><h3>Testimonials</h3><div class="muted">Kind words from clients</div></div>
+    <div class="testimonials">
+      <div class="t reveal">
+        <strong>Acme Co.</strong>
+        <p class="muted">"They shipped our product in 6 weeks. Solid team."</p>
+      </div>
+      <div class="t reveal">
+        <strong>Lyra</strong>
+        <p class="muted">"Beautiful design and smooth deployment."</p>
+      </div>
+      <div class="t reveal">
+        <strong>Nimbus</strong>
+        <p class="muted">"Reliable support and transparent pricing."</p>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-wrapper">
+      <div class="testimonial"><img src="https://randomuser.me/api/portraits/women/1.jpg" alt=""><p>Absolutely phenomenal service!</p><span>- Sarah J.</span></div>
+      <div class="testimonial"><img src="https://randomuser.me/api/portraits/men/2.jpg" alt=""><p>The best business experience I've had.</p><span>- Mark T.</span></div>
+      <div class="testimonial"><img src="https://randomuser.me/api/portraits/women/3.jpg" alt=""><p>They exceeded my expectations.</p><span>- Anna K.</span></div>
+      <div class="testimonial"><img src="https://randomuser.me/api/portraits/men/4.jpg" alt=""><p>Great professionalism and quality.</p><span>- John D.</span></div>
+      <div class="testimonial"><img src="https://randomuser.me/api/portraits/women/5.jpg" alt=""><p>Highly recommended for everyone.</p><span>- Lisa W.</span></div>
+      <div class="testimonial"><img src="https://randomuser.me/api/portraits/men/6.jpg" alt=""><p>Fantastic results and quick delivery.</p><span>- Mike B.</span></div>
+      <div class="testimonial"><img src="https://randomuser.me/api/portraits/women/7.jpg" alt=""><p>My go-to company from now on.</p><span>- Emily C.</span></div>
+      <div class="testimonial"><img src="https://randomuser.me/api/portraits/men/8.jpg" alt=""><p>They made everything so simple.</p><span>- Daniel P.</span></div>
+      <div class="testimonial"><img src="https://randomuser.me/api/portraits/women/9.jpg" alt=""><p>Incredible value for the price.</p><span>- Rachel F.</span></div>
+      <div class="testimonial"><img src="https://randomuser.me/api/portraits/men/10.jpg" alt=""><p>Fast, reliable, and trustworthy.</p><span>- Chris M.</span></div>
+    </div>
+  </section>
+  <!-- Gallery Section -->
+  <section class="gallery">
+    <h2>Our Gallery</h2>
+    <div class="gallery-container">
+      <div class="gallery-track">
+        <img src="images/img_1.jpg" alt="Gallery 1">
+        <img src="images/img_1.jpg" alt="Gallery 2">
+        <img src="images/img_1.jpg" alt="Gallery 3">
+        <img src="images/img_1.jpg" alt="Gallery 4">
+        <img src="images/img_1.jpg" alt="Gallery 5">
+        <img src="images/img_1.jpg" alt="Gallery 6">
+        <img src="images/img_1.jpg" alt="Gallery 7">
+        <img src="images/img_1.jpg" alt="Gallery 8">
+        <img src="images/img_1.jpg" alt="Gallery 9">
+        <img src="images/img_1.jpg" alt="Gallery 10">
+        <img src="images/img_1.jpg" alt="Gallery 11">
+        <img src="images/img_1.jpg" alt="Gallery 12">
+      </div>
+    </div>
+  </section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="container">
+    <div class="section-title"><h3>Team</h3><div class="muted">The people behind the product</div></div>
+    <div class="team">
+      <div class="member reveal">
+        <div style="width:76px;height:76px;border-radius:20px;background:linear-gradient(135deg,var(--aqua),var(--aqua-2));margin:0 auto 8px"></div>
+        <strong>Rita Lane</strong>
+        <div class="muted">CEO</div>
+      </div>
+
+      <div class="member reveal">
+        <div style="width:76px;height:76px;border-radius:20px;background:linear-gradient(135deg,var(--aqua),var(--aqua-2));margin:0 auto 8px"></div>
+        <strong>Kofi Mensah</strong>
+        <div class="muted">CTO</div>
+      </div>
+
+      <div class="member reveal">
+        <div style="width:76px;height:76px;border-radius:20px;background:linear-gradient(135deg,var(--aqua),var(--aqua-2));margin:0 auto 8px"></div>
+        <strong>Amaka Obi</strong>
+        <div class="muted">Design Lead</div>
+      </div>
+
+      <div class="member reveal">
+        <div style="width:76px;height:76px;border-radius:20px;background:linear-gradient(135deg,var(--aqua),var(--aqua-2));margin:0 auto 8px"></div>
+        <strong>J. Doe</strong>
+        <div class="muted">Head of Growth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / BOOKING (with modal demo) -->
+<section id="contact">
+  <div class="container">
+    <div class="section-title"><h3>Contact & Booking</h3><div class="muted">Let's start something</div></div>
+
+    <div style="display:grid;grid-template-columns:1fr 340px;gap:24px">
+      <form id="contactForm" class="reveal" onsubmit="return false;">
+        <div class="form-row">
+          <input required class="input" placeholder="Full name" name="name" />
+          <input required class="input" placeholder="Company" name="company" />
+        </div>
+        <div style="margin-top:12px">
+          <input required class="input" placeholder="Email" name="email" />
+        </div>
+        <div style="margin-top:12px">
+          <textarea required class="input" rows="6" placeholder="Tell us about your project" name="message"></textarea>
+        </div>
+        <div style="margin-top:12px;display:flex;gap:12px;align-items:center">
+          <button class="cta">Send inquiry</button>
+          <button type="button" id="bookBtn" style="padding:10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04)">Book call</button>
+        </div>
+      </form>
+
+      <aside class="card-pro reveal">
+        <h4>Office</h4>
+        <div class="muted">Remote-first • Available GMT+1</div>
+        <div style="margin-top:12px">
+          <strong>Support</strong>
+          <div class="muted">support@aquablack.example</div>
+        </div>
+
+        <div style="margin-top:14px">
+          <small class="muted">Office hours</small>
+          <div class="muted">Mon — Fri, 9am — 5pm</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+    <div>
+      <strong>AquaBlack</strong>
+      <div class="muted">© 2025 • All rights reserved</div>
+    </div>
+    <div class="muted">Built with ♥ — Animations, responsive, modern</div>
+  </div>
+</footer>
+
+  </main>  <!-- Modal (booking) -->  <div id="modal" role="dialog" aria-modal="true" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:80">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.7));backdrop-filter:blur(4px)"></div>
+    <div style="position:relative;max-width:720px;width:94%;padding:22px;border-radius:16px;background:linear-gradient(180deg, rgba(10,10,10,0.92), rgba(7,8,10,0.95));box-shadow:var(--shadow)">
+      <button id="closeModal" style="position:absolute;right:14px;top:14px;background:transparent;border:0;color:var(--muted);font-size:18px">✕</button>
+      <h3>Schedule a call</h3>
+      <p class="muted">Pick a time that suits you. (Demo: schedule not functional — replace with Calendly or your calendar link)</p>
+      <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+        <button class="cta">Mon 10:00</button>
+        <button class="cta">Tue 14:00</button>
+        <button class="cta">Wed 16:00</button>
+      </div>
+    </div>
+  </div>  <script>
+    // --- small UI: reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible') });
+    },{threshold:0.12});
+    revealEls.forEach(el=>io.observe(el));
+
+    // --- mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    menuBtn.addEventListener('click', ()=>{
+      const navUl = document.querySelector('nav ul');
+      if(navUl.style.display==='flex') navUl.style.display='none'; else navUl.style.display='flex';
+      navUl.style.flexDirection='column'; navUl.style.background='linear-gradient(180deg, rgba(5,5,5,0.9), rgba(0,0,0,0.85))'; navUl.style.position='absolute'; navUl.style.right='20px'; navUl.style.top='64px'; navUl.style.padding='12px'; navUl.style.borderRadius='12px';
+    });
+
+    // --- modal booking
+    document.getElementById('bookBtn').addEventListener('click', ()=>{document.getElementById('modal').style.display='flex'});
+    document.getElementById('closeModal').addEventListener('click', ()=>{document.getElementById('modal').style.display='none'});
+
+    // --- simple particle sparks on hero (lightweight)
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    function resizeCanvas(){
+      canvas.width = window.innerWidth*0.8; // keep it lighter
+      canvas.height = 320;
+      canvas.style.width = canvas.width+'px';
+      canvas.style.height = canvas.height+'px';
+      canvas.style.right = '0px';
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const particles = [];
+    function rand(min,max){return Math.random()*(max-min)+min}
+    function spawn(){
+      particles.push({x:rand(canvas.width*0.3, canvas.width), y:rand(0, canvas.height*0.8), vx:rand(-0.3, -1.2), vy:rand(-0.1,0.6), size:rand(0.6,2.4), life:rand(60,200)})
+      if(particles.length>260) particles.splice(0,20);
+    }
+    function step(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      if(Math.random()<0.7) spawn();
+      for(let i=particles.length-1;i>=0;i--){
+        const p = particles[i];
+        p.x += p.vx; p.y += p.vy; p.life--;
+        const alpha = Math.max(0, p.life/140);
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(0,209,209,${0.08*alpha + 0.06})`;
+        ctx.ellipse(p.x, p.y, p.size*1.6, p.size, 0, 0, Math.PI*2);
+        ctx.fill();
+        if(p.life<=0 || p.x< -50) particles.splice(i,1);
+      }
+      requestAnimationFrame(step);
+    }
+    step();
+
+    // --- small keyboard shortcut for toggling theme-ish effect
+    document.addEventListener('keydown',(e)=>{
+      if(e.key==='k' && (e.ctrlKey||e.metaKey)){
+        document.body.style.background = document.body.style.background.includes('#001') ? 'linear-gradient(180deg,var(--black) 0%, #020203 100%)' : 'linear-gradient(180deg,#001012 0%, #001219 100%)';
+      }
+    });
+
+    // --- accessibility: reduce motion if user prefers
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if(mq.matches){
+      document.querySelectorAll('*').forEach(el=>el.style.transition='none');
+      cancelAnimationFrame(step);
+    }
+
+    // --- showing tooltips & micro interactions
+    document.querySelectorAll('.service').forEach(s=>{
+      s.addEventListener('mouseenter', ()=>{s.style.transform='translateY(-6px) scale(1.01)'});
+      s.addEventListener('mouseleave', ()=>{s.style.transform='translateY(0) scale(1)'});
+    });
+
+    // small helper: smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (ev)=>{
+        const href = a.getAttribute('href');
+        if(href.length>1){
+          ev.preventDefault(); document.querySelector(href).scrollIntoView({behavior:'smooth'});
+          // close mobile menu if open
+          const navUl = document.querySelector('nav ul'); if(window.innerWidth<980) navUl.style.display='none';
+        }
+      })
+    });
+
+  </script></body>
+</html>
