@@ -407,13 +407,103 @@ section:nth-child(3) div:first-child p {
   line-height: 1.7;
 }
 
+/* === SECTION 6 === */
+#sixth-sect {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#sixth-sect > p {
+  margin-bottom: 58px;
+  letter-spacing: 1px;
+  line-height: 1.6;
+  font-size: 14px;
+  width: 90%;
+}
+
+#sixth-sect > h3 {
+  font-weight: 500;
+  margin-bottom: 20px;
+  letter-spacing: 1.8px;
+  line-height: 1.4;
+  width: 90%;
+  font-size: 24px;
+}
+
+#sixth-sect > div:nth-child(3) {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+#sixth-sect :nth-child(3) div {
+  padding: 14px;
+  width: 250px;
+  border-radius: 11px;
+  box-shadow: 1px 1px 13px #36393a;
+  transition: .3s ease-in-out all;
+}
+
+#sixth-sect :nth-child(3) div p {
+  font-size: 14px;
+  color: #616161;
+  line-height: 1.4;
+  margin-top: 20px;
+}
+
+#sixth-sect :nth-child(3) div:hover {
+  transform: scale(0.9);
+  box-shadow: 1px 1px 13px #111;
+}
+
+#sixth-sect :nth-child(3) div img {
+  text-align: left;
+}
+
+#sixth-sect button {
+  padding: 20px 32px;
+  border: none;
+  border-radius: 9px;
+  font-weight: 500;
+  font-size: 18px;
+  color: #05652c;
+  background: #eab40d;
+  margin-top: 50px;
+}
+
 /* === FOOTER === */
 footer {
-  background: #05652c;
-  color: white;
-  text-align: center;
+  background: #f7f7f7;
+  color: #525252;
+  text-align: left;
   padding: 25px 10px;
   margin-top: 50px;
+}
+
+footer h4 {
+  padding: 10px;
+  font-size: 19px;
+  color: #333;
+}
+
+footer ul li {
+  list-style-type: none;
+  padding: 10px;
+}
+
+footer ul li a {
+  text-decoration: none;
+  color: #6e6e6e
+}
+
+#quick-links {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 /* === RESPONSIVENESS === */
@@ -439,6 +529,13 @@ footer {
 }
   .hero-buttons {
     flex-direction: column;
+  }
+  #sixth-sect > div:nth-child(3) {
+    grid-template-columns: repeat(1, 3fr);
+  }
+  #quick-links {
+    grid-template-columns: repeat(1, 1fr);
+    place-items: left;
   }
 }
 
@@ -714,16 +811,92 @@ footer {
     </div>
   </section>
   <!-- == SECTION 6 == -->
-  <section>
+  <section id="sixth-sect">
     <h3>Everything Your Business Needs</h3>
     <p>Powerful tools designed specifically for African businesses. Choose individual modules or get the complete suite.</p>
     <div>
-      
+      <div>
+        <img src="" alt="">
+        <h4>School Management Portal</h4>
+        <p>Organize all staff and student information, school fees, test, assignments and exams</p>
+      </div>
+      <div>
+        <img src="" alt="">
+        <h4>Invoicing</h4>
+        <p>Automated invoicing expense tracking and finicial reporting</p>
+      </div>
+      <div>
+        <img src="" alt="">
+        <h4>Storefront</h4>
+        <p>Point of sale, inventory management and customer loyalty programs all inone platform</p>
+      </div>
+      <div>
+        <img src="" alt="">
+        <h4>Book Keeping</h4>
+        <p>This accounting Software will help you record all your inventory sales, expenses and more</p>
+      </div>
+      <div>
+        <img src="" alt="">
+        <h4>Time Management</h4>
+        <p>Helpsbusiness and employees manage their work timing and productivity effectively</p>
+      </div>
+      <div>
+        <img src="" alt="">
+        <h4>E-Commerce Webber</h4>
+        <p>This app allows businesses to create websites for their brands andlaunch in minutes</p>
+      </div>
     </div>
+    <button>View All Products</button>
   </section>
   <!-- === FOOTER === --> 
   <footer>
-    <p>&copy; 2025 GreenBii. All Rights Reserved.</p>
+    <div>
+      <p style="padding: 20px;">Helping African businesses work smart and grow fast with an all-in-one platform for managing your entire business.</p>
+      <div style="padding: 5px 20px;">
+        <i class="fab fa-facebook" style="font-size: 20px"></i>
+        <i class="fab fa-twitter" style="padding-left: 12px; font-size: 20px"></i>
+        <i class="fab fa-instagram" style="padding-left: 12px; font-size: 20px"></i>
+        <i class="fab fa-linkedin" style="padding-left: 12px; font-size: 20px"></i>
+      </div>
+      <div id="quick-links">
+        <div>
+        <h4>Application Bundles</h4>
+        <ul>
+          <li>Retail and E-Commerce</li>
+          <li>Business Coaches and Consultants</li>
+          <li>Retaurant and Bar</li>
+          <li>Mass Learning & Development</li>
+          <li>Schools and Academies</li>
+        </ul>
+        </div>
+        <div>
+        <h4>Company</h4>
+        <ul>
+          <li>About Us</li>
+          <li>Careers</li>
+          <li>Partners</li>
+          <li>Contact</li>
+        </ul>
+        </div>
+        <div>
+        <h4>Resources</h4>
+        <ul>
+          <li>Help Center</li>
+          <li>Community</li>
+          <li>Webinars</li>
+          <li>Partners</li>
+          <li>API</li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <div style="border-top: solid #ddd 1px; text-align: center; padding-top: 17px;">&copy; 2025 GreenBii. All rights reserved. <br>
+      <div style="display: flex; text-align: center; justify-content: center; align-items: center; gap: 10px; padding-top: 17px;">
+        <p>Privacy Policy</p>
+        <p>Terms of Service</p>
+        <p>Cookie Policy</p>
+      </div>
+    </div>
   </footer>
   </main>
 
